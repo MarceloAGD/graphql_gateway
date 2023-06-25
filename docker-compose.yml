@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  users:
+    container_name: users
+    build:
+      context: C:\Users\marc0\OneDrive - alumnos.ucn.cl\Documentos\GitHub\Api_users
+      dockerfile: Dockerfile
+    ports:
+      - 4001:4001
+
+  playlists:
+    container_name: playlists
+    build:
+      context: C:\Users\marc0\OneDrive - alumnos.ucn.cl\Documentos\GitHub\Api_playlists
+      dockerfile: Dockerfile
+    ports:
+      - 4002:4002
+
+  movies:
+    container_name: movies
+    build:
+      context: C:\Users\marc0\OneDrive - alumnos.ucn.cl\Documentos\GitHub\Api_movie
+      dockerfile: Dockerfile
+    ports:
+      - 4003:4003
+
+  api-gateway:
+    container_name: api-gateway
+    build: .
+    ports:
+      - 4000:4000
+    depends_on:
+      - users
+      - playlists
+      - movies
+    
